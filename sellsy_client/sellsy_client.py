@@ -1,11 +1,9 @@
 import json
 from requests_oauthlib import OAuth1, OAuth1Session
+from oauthlib.oauth1 import SIGNATURE_PLAINTEXT, SIGNATURE_TYPE_BODY
 from errors import SellsyAuthenticateError, SellsyError
 
 DEFAULT_URL = 'https://apifeed.sellsy.com/0/'
-
-SIGNATURE_PLAINTEXT='PLAINTEXT'
-SIGNATURE_TYPE_BODY='body'
 
 class SellsyClient:
     def __init__(self, consumer_token, consumer_secret, user_token, user_secret, url=DEFAULT_URL):
