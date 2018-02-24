@@ -1,7 +1,7 @@
 import json
 from requests_oauthlib import OAuth1, OAuth1Session
 from oauthlib.oauth1 import SIGNATURE_PLAINTEXT, SIGNATURE_TYPE_BODY
-from errors import SellsyAuthenticateError, SellsyError
+from .errors import SellsyAuthenticateError, SellsyError
 
 DEFAULT_URL = 'https://apifeed.sellsy.com/0/'
 
