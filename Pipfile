@@ -13,3 +13,4 @@ requests-oauthlib = "*"
 
 [dev-packages]
 
+pytest = "*"

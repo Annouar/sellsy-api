@@ -12,6 +12,14 @@ requires = [
     'requests-oauthlib>=0.8.0'
 ]
 
+setup_requires = [
+    'pytest-runner'
+]
+
+tests_require = [
+    'pytest'
+]
+
 about = {}
 with open(os.path.join(here, 'sellsy_client', '__version__.py'), mode='r', encoding='utf-8') as f:
     exec(f.read(), about)
@@ -21,7 +29,10 @@ setup(
     version = about['__version__'],
 
     packages = packages,
-    install_requires = requires,  
+    install_requires = requires,
+
+    tests_require = tests_require,
+    setup_requires = setup_requires,
 
     author = about['__author__'],
     description = about['__description__'],
