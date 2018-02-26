@@ -72,7 +72,7 @@ The function returns a dictionary containing the response:
       "id":"55",
       "corpid":"644",
       "name":"New Prospect",
-	  "...":"...",
+      "...":"...",
       "created":"2013-01-31 14:49:35",
       "updated":"2013-01-31 16:41:38"
    },
