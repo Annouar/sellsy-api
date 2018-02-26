@@ -1,11 +1,11 @@
 #!/usr/bin/env python
 
 import os
-from setuptools import setup
+from setuptools import find_packages, setup
 
 here = os.path.abspath(os.path.dirname(__file__))
 
-packages = ['sellsy_client']
+packages = find_packages(exclude=('tests',))
 
 requires = [
     'requests>=2.18.4',
@@ -39,15 +39,15 @@ setup(
 
     author = about['__author__'],
     description = about['__description__'],
-    long_description = readme
+    long_description = readme,
     url = about['__url__'],
     license = about['__license__'],
-    classifiers = [
-        'Development Status :: 3 - Alpha',
-        'Intended Audience :: Developers',
-        'Licence :: OSI Appouved :: MIT License',
-        'Programming Language :: Python :: 3',
-    ],
+    #classifiers = [
+    #    'Development Status :: 3 - Alpha',
+    #    'Intended Audience :: Developers',
+    #    'Licence :: OSI Appouved :: MIT License',
+    #    'Programming Language :: Python :: 3.5',
+    #],
     keywords = 'Sellsy SellsyAPI SellsyClient sellsy_client',
     project_urls = {
         'Bug Reports': 'https://github.com/Annouar/sellsy-client/issues'
