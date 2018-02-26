@@ -46,18 +46,18 @@ import os
 import sellsy_client
 
 client = SellsyClient(
-  'my_consumer_token',
-  'my_consumer_secret',
-  'my_user_token',
-  'my_user_secret')
+    'my_consumer_token',
+    'my_consumer_secret',
+    'my_user_token',
+    'my_user_secret')
 
 try:
-	infos = client.api(method='Infos.getInfos')
-	prospect = client.api(method='Prospects.getOne', params={ 'id': 55 })
+    infos = client.api(method='Infos.getInfos')
+    prospect = client.api(method='Prospects.getOne', params={ 'id': 55 })
 except sellsy_client.SellsyAuthenticateError as e: # raised if credential keys are not valid
-	print('Authentication failed ! Details : {}'.format(e))
+    print('Authentication failed ! Details : {}'.format(e))
 except sellsy_client.SellsyError as e: # raised if an error is returned by Sellsy API (
-	print(e)
+    print(e)
     
 prospect_name = prospect['corporation']['name']
          
@@ -72,7 +72,7 @@ The function returns a dictionary containing the response:
       "id":"55",
       "corpid":"644",
       "name":"New Prospect",
-	  ...
+	  "...":"...",
       "created":"2013-01-31 14:49:35",
       "updated":"2013-01-31 16:41:38"
    },
@@ -80,7 +80,7 @@ The function returns a dictionary containing the response:
       {
          "id":"44",
          "prospectid":"55",
-         ...
+         "...":"...",
          "sign":"",
          "birthdate":"0000-00-00"
       }
