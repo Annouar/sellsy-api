@@ -24,6 +24,9 @@ about = {}
 with open(os.path.join(here, 'sellsy_client', '__version__.py'), mode='r', encoding='utf-8') as f:
     exec(f.read(), about)
 
+with open('README.md', mode='r', encoding='utf-8') as f:
+    readme = f.read()
+
 setup(
     name = about['__title__'],
     version = about['__version__'],
@@ -36,6 +39,7 @@ setup(
 
     author = about['__author__'],
     description = about['__description__'],
+    long_description = readme
     url = about['__url__'],
     license = about['__license__'],
     classifiers = [
