@@ -55,7 +55,7 @@ if __name__=='__main__':
         user_secret)
         
     try:
-        prospect = client.api(method='Prospects.getOnes', params={
+        prospect = client.api(method='Prospects.getOne', params={
             'id': 10340097
         })
     except SellsyAuthenticateError as e:
