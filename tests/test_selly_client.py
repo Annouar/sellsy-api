@@ -1,11 +1,15 @@
 import os
 import pytest
-from sellsy_client import SellsyClient, SellsyAuthenticateError, SellsyError
+from sellsy_api import SellsyClient, SellsyAuthenticateError, SellsyError
 
 consumer_token = os.environ.get('SELLSY_CONSUMER_TOKEN')
 consumer_secret = os.environ.get('SELLSY_CONSUMER_SECRET')
 user_token = os.environ.get('SELLSY_USER_TOKEN')
 user_secret = os.environ.get('SELLSY_USER_SECRET')
+consumer_token = 'cf811dbf81472591467b3ffd2e79e6817bbddafd'
+consumer_secret = 'a7e56074d1166de57a60cdd3b5a5f6e6d68c5c78'
+user_token = 'bff11b330712d929bf67b212a4162ec38e27076b'
+user_secret = '48eff63f7ee8322800eb3a0e24d1e12963d204d7'
 
 
 def make_credential_incorrect(credential):

@@ -1,5 +1,5 @@
 import pytest
-from sellsy_client import SellsyAuthenticateError, SellsyError
+from sellsy_api import SellsyAuthenticateError, SellsyError
 
 
 def test_raise_SellsyAuthenticateError():

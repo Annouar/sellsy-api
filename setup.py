@@ -21,7 +21,7 @@ tests_require = [
 ]
 
 about = {}
-with open(os.path.join(here, 'sellsy_client', '__version__.py'), mode='r', encoding='utf-8') as f:
+with open(os.path.join(here, 'sellsy_api', '__version__.py'), mode='r', encoding='utf-8') as f:
     exec(f.read(), about)
 
 with open('README.md', mode='r', encoding='utf-8') as f:
@@ -42,7 +42,7 @@ setup(
     long_description=readme,
     url=about['__url__'],
     license=about['__license__'],
-    keywords='Sellsy SellsyAPI SellsyClient sellsy_client',
+    keywords='Sellsy SellsyAPI SellsyClient sellsy_api sellsy_client',
     project_urls={
         'Bug Reports': 'https://github.com/Annouar/sellsy-client/issues'
     }

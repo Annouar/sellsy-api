@@ -1,6 +1,0 @@
-__title__ = 'sellsy_client'
-__description__ = 'sellsy_client is a tiny client for Sellsy API'
-__url__ = 'https://github.com/Annouar/sellsy-client'
-__version__ = '0.0.1'
-__author__ = 'Annouar'
-__license__ = 'MIT'
