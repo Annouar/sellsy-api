@@ -1,20 +1,21 @@
 import json
-from requests_oauthlib import OAuth1, OAuth1Session
-from oauthlib.oauth1 import SIGNATURE_PLAINTEXT, SIGNATURE_TYPE_BODY
+import requests_oauthlib
+import oauthlib.oauth1 as oauth1
 from .errors import SellsyAuthenticateError, SellsyError
 
 DEFAULT_URL = 'https://apifeed.sellsy.com/0/'
 
+
 class SellsyClient:
     def __init__(self, consumer_token, consumer_secret, user_token, user_secret, url=DEFAULT_URL):
         self.url = url
-        self.session = OAuth1Session(
+        self.session = requests_oauthlib.OAuth1Session(
             consumer_token,
             consumer_secret,
             user_token,
             user_secret,
-            signature_method=SIGNATURE_PLAINTEXT,
-            signature_type=SIGNATURE_TYPE_BODY
+            signature_method=oauth1.SIGNATURE_PLAINTEXT,
+            signature_type=oauth1.SIGNATURE_TYPE_BODY
         )
 
     def api(self, method='Infos.getInfos', params={}):
@@ -22,7 +23,7 @@ class SellsyClient:
         payload = {'method': method, 'params': params}
 
         response = self.session.post(self.url, data={
-            'request': 1, 
+            'request': 1,
             'io_mode': 'json',
             'do_in': json.dumps(payload)
         }, headers=headers)
@@ -40,7 +41,7 @@ class SellsyClient:
         return response_json['response']
 
 
-if __name__=='__main__':
+if __name__ == '__main__':
     import os
 
     consumer_token = os.environ.get('SELLSY_CONSUMER_TOKEN')
@@ -53,7 +54,7 @@ if __name__=='__main__':
         consumer_secret,
         user_token,
         user_secret)
-        
+
     try:
         prospect = client.api(method='Prospects.getOne', params={
             'id': 10340097

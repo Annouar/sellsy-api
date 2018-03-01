@@ -14,3 +14,4 @@ requests-oauthlib = "*"
 [dev-packages]
 
 pytest = "*"
+"flake8" = "*"

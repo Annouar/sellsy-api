@@ -28,28 +28,22 @@ with open('README.md', mode='r', encoding='utf-8') as f:
     readme = f.read()
 
 setup(
-    name = about['__title__'],
-    version = about['__version__'],
+    name=about['__title__'],
+    version=about['__version__'],
 
-    packages = packages,
-    install_requires = requires,
+    packages=packages,
+    install_requires=requires,
 
-    tests_require = tests_require,
-    setup_requires = setup_requires,
+    tests_require=tests_require,
+    setup_requires=setup_requires,
 
-    author = about['__author__'],
-    description = about['__description__'],
-    long_description = readme,
-    url = about['__url__'],
-    license = about['__license__'],
-    #classifiers = [
-    #    'Development Status :: 3 - Alpha',
-    #    'Intended Audience :: Developers',
-    #    'Licence :: OSI Appouved :: MIT License',
-    #    'Programming Language :: Python :: 3.5',
-    #],
-    keywords = 'Sellsy SellsyAPI SellsyClient sellsy_client',
-    project_urls = {
+    author=about['__author__'],
+    description=about['__description__'],
+    long_description=readme,
+    url=about['__url__'],
+    license=about['__license__'],
+    keywords='Sellsy SellsyAPI SellsyClient sellsy_client',
+    project_urls={
         'Bug Reports': 'https://github.com/Annouar/sellsy-client/issues'
     }
 )
