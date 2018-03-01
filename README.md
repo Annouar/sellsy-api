@@ -1,8 +1,8 @@
 
-# sellsy_client
+# sellsy_api
 > A tiny client to manage your Sellsy plateform using Python
 
-sellsy_client is a client for the official [Sellsy API](https://api.sellsy.com) in order to allow you to get and manipulate data from [Sellsy plateform](https://welcome.sellsy.com/). The official client was written in PHP, here is a client written in pure python 3.
+sellsy_api is a client for the official [Sellsy API](https://api.sellsy.com) in order to allow you to get and manipulate data from [Sellsy plateform](https://welcome.sellsy.com/). The official client was written in PHP, here is a client written in pure python 3.
 
 ### Features
 - Allows you to connect with your Oauth private API keys
@@ -23,29 +23,29 @@ If you are using pip as PM:
 $  workon projectenv
 
 # Use pip to install the package
-$  pip install sellsy_client
+$  pip install sellsy_api
 ```
 
 Or if you are using pipenv (pip needs to be installed too):
 ```shell
 
 $  cd /path/to/my/project
-$  pipenv install sellsy_client
+$  pipenv install sellsy_api
 ```
 
 Verify now if the package as been successfully installed
 ```shell
 $  python
->> import sellsy_client # Should not raise exception
+>> import sellsy_api # Should not raise exception
 ```
 
 ## Quick Start
 
 ```python
 import os
-import sellsy_client
+import sellsy_api
 
-client = SellsyClient(
+client = sellsy_api.Client(
     'my_consumer_token',
     'my_consumer_secret',
     'my_user_token',
@@ -54,9 +54,9 @@ client = SellsyClient(
 try:
     infos = client.api(method='Infos.getInfos')
     prospect = client.api(method='Prospects.getOne', params={ 'id': 55 })
-except sellsy_client.SellsyAuthenticateError as e: # raised if credential keys are not valid
+except sellsy_api.SellsyAuthenticateError as e: # raised if credential keys are not valid
     print('Authentication failed ! Details : {}'.format(e))
-except sellsy_client.SellsyError as e: # raised if an error is returned by Sellsy API (
+except sellsy_api.SellsyError as e: # raised if an error is returned by Sellsy API (
     print(e)
     
 prospect_name = prospect['corporation']['name']
@@ -98,7 +98,7 @@ For now, two exceptions could be raised by calling the function:
 
 - [Sellsy plateform](https://welcome.sellsy.com/)
 - [Sellsy API](https://api.sellsy.com)
-- [sellsy_client issue tracker](https://github.com/Annouar/sellsy-client/issues)
+- [sellsy_api issue tracker](https://github.com/Annouar/sellsy-client/issues)
 
 
 ## License
