@@ -1,8 +1,8 @@
 
-# sellsy_api
+# sellsy-api
 > A tiny client to manage your Sellsy plateform using Python
 
-sellsy_api is a client for the official [Sellsy API](https://api.sellsy.com) in order to allow you to get and manipulate data from [Sellsy plateform](https://welcome.sellsy.com/). The official client was written in PHP, here is a client written in pure python 3.
+sellsy-api is a client for the official [Sellsy API](https://api.sellsy.com) in order to allow you to get and manipulate data from [Sellsy plateform](https://welcome.sellsy.com/). The official client was written in PHP, here is a client written in pure python 3.
 
 ### Features
 - Allows you to connect with your Oauth private API keys
@@ -98,7 +98,7 @@ For now, two exceptions could be raised by calling the function:
 
 - [Sellsy plateform](https://welcome.sellsy.com/)
 - [Sellsy API](https://api.sellsy.com)
-- [sellsy_api issue tracker](https://github.com/Annouar/sellsy-client/issues)
+- [sellsy-api issue tracker](https://github.com/Annouar/sellsy-client/issues)
 
 
 ## License
