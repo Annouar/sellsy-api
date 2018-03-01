@@ -1,2 +1,2 @@
-from .sellsy_client import SellsyClient
+from .sellsy_client import Client
 from .errors import SellsyAuthenticateError, SellsyError

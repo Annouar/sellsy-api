@@ -1,15 +1,11 @@
 import os
 import pytest
-from sellsy_api import SellsyClient, SellsyAuthenticateError, SellsyError
+import sellsy_api
 
 consumer_token = os.environ.get('SELLSY_CONSUMER_TOKEN')
 consumer_secret = os.environ.get('SELLSY_CONSUMER_SECRET')
 user_token = os.environ.get('SELLSY_USER_TOKEN')
 user_secret = os.environ.get('SELLSY_USER_SECRET')
-consumer_token = 'cf811dbf81472591467b3ffd2e79e6817bbddafd'
-consumer_secret = 'a7e56074d1166de57a60cdd3b5a5f6e6d68c5c78'
-user_token = 'bff11b330712d929bf67b212a4162ec38e27076b'
-user_secret = '48eff63f7ee8322800eb3a0e24d1e12963d204d7'
 
 
 def make_credential_incorrect(credential):
@@ -50,7 +46,7 @@ def make_credential_incorrect(credential):
 
 
 def bad_client(request):
-    return SellsyClient(
+    return sellsy_api.Client(
         request.param['consumer_token'],
         request.param['consumer_secret'],
         request.param['user_token'],
@@ -58,13 +54,13 @@ def bad_client(request):
 
 
 def test_oauth_bad_credentials(bad_client):
-    with pytest.raises(SellsyAuthenticateError):
+    with pytest.raises(sellsy_api.SellsyAuthenticateError):
         bad_client.api(method='Infos.getInfos')
 
 
 @pytest.fixture(autouse=True, scope='session')
 def client():
-    return SellsyClient(
+    return sellsy_api.Client(
         consumer_token,
         consumer_secret,
         user_token,
@@ -72,7 +68,7 @@ def client():
 
 
 def test_client_is_instantiated(client):
-    assert isinstance(client, SellsyClient)
+    assert isinstance(client, sellsy_api.Client)
 
 
 def test_client_is_working_without_error(client):
@@ -90,13 +86,13 @@ def test_client_returns_dict(client):
 
 def test_client_returns_exception_when_not_valid_method(client):
     not_valid_method = 'NotValid.Method'
-    with pytest.raises(SellsyError) as err:
+    with pytest.raises(sellsy_api.SellsyError) as err:
         client.api(method=not_valid_method)
     err.match(r'E_METHOD_DONT_EXIT - Method {} does not exist'.format(not_valid_method))
 
 
 def test_client_returns_exception_when_non_existing_item_id(client):
-    with pytest.raises(SellsyError) as err:
+    with pytest.raises(sellsy_api.SellsyError) as err:
         client.api(method='Prospects.getOne', params={
             'id': -1
         })
@@ -104,7 +100,7 @@ def test_client_returns_exception_when_non_existing_item_id(client):
 
 
 def test_client_returns_exception_when_invalid_item_id(client):
-    with pytest.raises(SellsyError) as err:
+    with pytest.raises(sellsy_api.SellsyError) as err:
         client.api(method='Prospects.getOne', params={
             'id': 'rr'
         })

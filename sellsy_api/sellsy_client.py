@@ -6,7 +6,7 @@ from .errors import SellsyAuthenticateError, SellsyError
 DEFAULT_URL = 'https://apifeed.sellsy.com/0/'
 
 
-class SellsyClient:
+class Client:
     def __init__(self, consumer_token, consumer_secret, user_token, user_secret, url=DEFAULT_URL):
         self.url = url
         self.session = requests_oauthlib.OAuth1Session(
@@ -49,7 +49,7 @@ if __name__ == '__main__':
     user_token = os.environ.get('SELLSY_USER_TOKEN')
     user_secret = os.environ.get('SELLSY_USER_SECRET')
 
-    client = SellsyClient(
+    client = Client(
         consumer_token,
         consumer_secret,
         user_token,
