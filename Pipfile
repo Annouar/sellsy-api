@@ -7,8 +7,8 @@ verify_ssl = true
 
 [packages]
 
-requests = "*"
-requests-oauthlib = "*"
+requests = ">=2.21.0"
+requests-oauthlib = ">=1.2.0"
 
 
 [dev-packages]

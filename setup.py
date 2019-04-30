@@ -8,8 +8,8 @@ here = os.path.abspath(os.path.dirname(__file__))
 packages = find_packages(exclude=('tests',))
 
 requires = [
-    'requests>=2.18.4',
-    'requests-oauthlib>=0.8.0'
+    'requests>=2.21.0',
+    'requests-oauthlib>=1.2.0'
 ]
 
 setup_requires = [
