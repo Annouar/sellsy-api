@@ -49,6 +49,9 @@ class Client:
         # Error handler
         response_json = response.json()
         if response_json['status'] == 'error':
+            # To ease debugging of sellsy errors, we log the full response from Sellsy since it
+            # may contain extra information we need.
+            logger.error("An error occurred while calling the Sellsy API: " + json.dumps(response_json))
             error_code, error_message = response_json['error']['code'], response_json['error']['message']
             raise SellsyError(error_code, error_message)
 
