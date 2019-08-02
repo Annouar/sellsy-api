@@ -1,9 +1,15 @@
 import json
+import logging
+import time
+
 import requests_oauthlib
 import oauthlib.oauth1 as oauth1
-from .errors import SellsyAuthenticateError, SellsyError
+from .errors import SellsyAuthenticateError, SellsyError, SellsyTooManyRequestsError
 
 DEFAULT_URL = 'https://apifeed.sellsy.com/0/'
+
+
+logger = logging.getLogger('sellsy_api')
 
 
 class Client:
@@ -18,7 +24,7 @@ class Client:
             signature_type=oauth1.SIGNATURE_TYPE_BODY
         )
 
-    def api(self, method='Infos.getInfos', params={}):
+    def api(self, method='Infos.getInfos', params={}, retry=True):
         headers = {'content-type': 'application/json', 'cache-control': 'no-cache'}
         payload = {'method': method, 'params': params}
 
@@ -32,9 +38,20 @@ class Client:
         if response.status_code == 401:
             raise SellsyAuthenticateError(response.text)
 
+        # Handle sellsy too many requests (429 status code returned)
+        if response.status_code == 429:
+            if retry:
+                logger.info("Too many calls made to the Sellsy API. Will perform a new attempt...")
+                time.sleep(1)
+                return self.api(method, params, retry=False)
+            raise SellsyTooManyRequestsError()
+
         # Error handler
         response_json = response.json()
         if response_json['status'] == 'error':
+            # To ease debugging of sellsy errors, we log the full response from Sellsy since it
+            # may contain extra information we need.
+            logger.error("An error occurred while calling the Sellsy API: " + json.dumps(response_json))
             error_code, error_message = response_json['error']['code'], response_json['error']['message']
             raise SellsyError(error_code, error_message)
 

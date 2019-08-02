@@ -1,1 +1,1 @@
-from .sellsy_exceptions import SellsyAuthenticateError, SellsyError
+from .sellsy_exceptions import SellsyAuthenticateError, SellsyError, SellsyTooManyRequestsError

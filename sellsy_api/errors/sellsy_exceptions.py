@@ -2,6 +2,10 @@ class SellsyAuthenticateError(Exception):
     pass
 
 
+class SellsyTooManyRequestsError(Exception):
+    pass
+
+
 class SellsyError(Exception):
     def __init__(self, sellsy_code_error, message):
         super(SellsyError, self).__init__(message)
